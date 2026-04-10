@@ -1,0 +1,10 @@
+steps to build a real time tracker
+
+1. check if the browser supports geolocation this can be done using navigator object.
+2. set 3 options 
+    highaccuracy : true // as the name suggests
+    timeout : 5 seconds // fetch location after every 5 seconds
+    maximumage=0 // no caching pickup the fresh data each time 
+3. use watch position to track the user's location continously.
+4.
+    
