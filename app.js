@@ -11,7 +11,7 @@ app.use(morgan('dev'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 const server=http.createServer(app);
 const io=socketio(server);
@@ -31,5 +31,5 @@ app.get('/', (req, res) => {
 });
 
 server.listen(PORT, () => {
-    console.log('Server is running on port ' + PORT);
+    console.log(`Server is running on port ${PORT}`);
 });

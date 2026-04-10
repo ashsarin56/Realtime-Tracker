@@ -21,9 +21,7 @@ else{
     alert("Geolocation is not supported by this browser.");
 }
 const map = L.map('map').setView([0, 0], 16);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: "Army Institue of Technology, Pune"
-}).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 const markers={};
 socket.on("recieve-location", (data)=>{
