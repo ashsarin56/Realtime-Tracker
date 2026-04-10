@@ -6,5 +6,11 @@ steps to build a real time tracker
     timeout : 5 seconds // fetch location after every 5 seconds
     maximumage=0 // no caching pickup the fresh data each time 
 3. use watch position to track the user's location continously.
-4.
-    
+4. emit the latitude and longitude via a socket with " send-location ".
+5. Initialize a map centered at coordinates (0,0) with a zoom level of 15 using leaflet.
+6. Create empty Object Markers
+7. When recieving the location data via socket extract the following:
+    a. longitude , latitude
+    b. id
+    c. and the center map on the new coordinates
+8. implmenet diconnect feature

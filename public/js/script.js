@@ -17,8 +17,22 @@ if(navigator.geolocation){
         }
     );
 }
-
-const map = L.map('map').setView([0, 0], 10);
+else{
+    alert("Geolocation is not supported by this browser.");
+}
+const map = L.map('map').setView([0, 0], 16);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: "Army Institue of Technology, Pune"
 }).addTo(map);
+
+const markers={};
+socket.on("recieve-location", (data)=>{
+    const {id, latitude, longitude}=data;
+    map.setView([latitude, longitude], 16);
+    if(markers[id])markers[id].setLatLng([latitude, longitude]);
+    else markers[id]=L.marker([latitude, longitude]).addTo(map);
+});
+socket.on("user-disconnected", (id)=>{
+    if(markers[id])map.removeLayer(markers[id]);
+    delete markers[id];
+});
